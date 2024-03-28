@@ -23,7 +23,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include <unistd.h>
 #include <vector>
 #include "feat/online-feature.h"
 #include "feat/wave-reader.h"
@@ -501,10 +500,10 @@ using namespace SpeakerIdentification;
 
 bool fexists(const char *filename){
   	ifstream ifile(filename);
-  	return ifile;
+  	return true;
 }
 
-int main(int argc, char *argv[]){
+int identifySpeaker(int argc, char *argv[]){
  	// First of all, check if /iv and its contents exist
 	if(!fexists("iv//train_iv.ark") || !fexists("iv//train_num_utts.ark"))
 		std::cerr << "No registered speaker info, enroll speaker first!\n";
